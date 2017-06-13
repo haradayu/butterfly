@@ -46,11 +46,19 @@
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
+
         <script>
+          ace.require("ace/ext/language_tools");
           var editor = ace.edit("editor");
           editor.$blockScrolling = Infinity;
           editor.setTheme("ace/theme/monokai");
           editor.getSession().setMode("ace/mode/python");
+          ({
+              enableBasicAutocompletion: true,
+              enableSnippets: true,
+              enableLiveAutocompletion: true
+          });
 
           $('#font-size').click(function(e) {
             editor.setFontSize($(e.target).data('size'));
@@ -65,6 +73,9 @@
           $('#load').click(function(e) {
             if (!confirm("読み込みますか？")) return;
             editor.setValue(localStorage.text, -1);
+          });
+          editor.on("focus", function(){
+            console.log("ace focus");
           });
         </script>
 

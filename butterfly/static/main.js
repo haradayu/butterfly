@@ -190,8 +190,8 @@
       this.startBlink();
       addEventListener('keydown', this.keyDown.bind(this));
       addEventListener('keypress', this.keyPress.bind(this));
-      // addEventListener('focus', this.focus.bind(this));
-      // addEventListener('blur', this.blur.bind(this));
+      addEventListener('focus', this.focus.bind(this));
+      addEventListener('blur', this.blur.bind(this));
       addEventListener('resize', (function(_this) {
         return function() {
           return _this.resize();
@@ -213,6 +213,17 @@
       })(this));
       this.emit('load');
       this.active = null;
+
+      var editor = ace.edit("editor");
+      editor.$blockScrolling = Infinity;
+      editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+      });
+      editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/javascript");
+
     }
 
     Terminal.prototype.emit = function(hook, obj) {
@@ -333,6 +344,7 @@
     };
 
     Terminal.prototype.focus = function() {
+      console.log("focus");
       var old_sl;
       old_sl = this.scrollLock;
       this.scrollLock = true;
@@ -347,6 +359,7 @@
     };
 
     Terminal.prototype.blur = function() {
+      console.log("blur");
       var old_sl;
       old_sl = this.scrollLock;
       this.scrollLock = true;
@@ -1419,6 +1432,7 @@
         this.skipNextKey = true;
       }else{
         this.skipNextKey = null;
+        return;
       }
 
       if (ev.keyCode > 15 && ev.keyCode < 19) {
