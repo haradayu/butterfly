@@ -1413,15 +1413,14 @@
 
     Terminal.prototype.keyDown = function(ev) {
       var key, ref;
+
       var selected = document.activeElement;
-      console.log(selected.className.toString());
       if (!selected.className.toString().match(/terminal/)){
-        // this.skipNextKey = true;
-        console.log("hello");
+        this.skipNextKey = true;
       }else{
-        // this.skipNextKey = false;
-        console.log("bye");
+        this.skipNextKey = null;
       }
+
       if (ev.keyCode > 15 && ev.keyCode < 19) {
         return true;
       }
