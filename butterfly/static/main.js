@@ -732,7 +732,7 @@
       }
       dom = this.screenToDom(force);
       this.writeDom(dom);
-      this.nativeScrollTo();
+      this.nativeScrollTo(this.scrollBottom);
       return this.emit('refresh');
     };
 
