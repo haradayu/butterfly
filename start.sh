@@ -1,1 +1,1 @@
-./butterfly.server.py --unsecure --unminified
+./butterfly.server.py --unsecure --unminified --login

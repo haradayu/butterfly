@@ -190,8 +190,8 @@
       this.startBlink();
       addEventListener('keydown', this.keyDown.bind(this));
       addEventListener('keypress', this.keyPress.bind(this));
-      addEventListener('focus', this.focus.bind(this));
-      addEventListener('blur', this.blur.bind(this));
+      // addEventListener('focus', this.focus.bind(this));
+      // addEventListener('blur', this.blur.bind(this));
       addEventListener('resize', (function(_this) {
         return function() {
           return _this.resize();
@@ -1413,6 +1413,15 @@
 
     Terminal.prototype.keyDown = function(ev) {
       var key, ref;
+      var selected = document.activeElement;
+      console.log(selected.className.toString());
+      if (!selected.className.toString().match(/terminal/)){
+        // this.skipNextKey = true;
+        console.log("hello");
+      }else{
+        // this.skipNextKey = false;
+        console.log("bye");
+      }
       if (ev.keyCode > 15 && ev.keyCode < 19) {
         return true;
       }
