@@ -214,6 +214,7 @@
       this.emit('load');
       this.active = null;
 
+      ace.require("ace/ext/language_tools");
       var editor = ace.edit("editor");
       editor.$blockScrolling = Infinity;
       editor.setOptions({
@@ -222,7 +223,14 @@
         enableLiveAutocompletion: true
       });
       editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/javascript");
+      editor.getSession().setMode("ace/mode/python");
+      document.getElementById("font-size").onclick = function(e){
+        editor.setFontSize(e.target.dataset['size'] / 1);
+          
+      };
+      // $('#font-size').click(function(e) {
+      //   editor.setFontSize($(e.target).data('size'));
+      // });
 
     }
 
@@ -1432,7 +1440,6 @@
         this.skipNextKey = true;
       }else{
         this.skipNextKey = null;
-        return;
       }
 
       if (ev.keyCode > 15 && ev.keyCode < 19) {
