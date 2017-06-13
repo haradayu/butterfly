@@ -12,12 +12,27 @@
 
     <title>Butterfly</title>
     <link href="{{ static_url('main.css') }}" rel="stylesheet" id="style">
+    <style type="text/css">
+    <!--
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    -->
+    </style>
   </head>
 
   <body spellcheck="false"
         data-force-unicode-width="{{ 'yes' if options.force_unicode_width else 'no' }}"
         data-root-path="{{ options.uri_root_path }}"
         data-session-token={{ session }}>
+
+    <div id="editor" style="height:65%"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js"></script>
+    <script>
+      ace.edit("editor");
+    </script>
+
     <div id="popup" class="hidden">
     </div>
     <script src="{{ static_url('html-sanitizer.js') }}"></script>
