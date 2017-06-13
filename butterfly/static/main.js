@@ -732,7 +732,7 @@
       }
       dom = this.screenToDom(force);
       this.writeDom(dom);
-      this.nativeScrollTo(this.scrollBottom);
+      this.nativeScrollTo(this.term.scrollHeight);
       return this.emit('refresh');
     };
 
@@ -810,7 +810,9 @@
       if (this.scrollLock) {
         return;
       }
-      return window.scrollTo(0, scroll);
+      // return window.scrollTo(0, scroll);
+      this.term.scrollTop = scroll ;
+      return;
     };
 
     Terminal.prototype.scrollDisplay = function(disp) {
