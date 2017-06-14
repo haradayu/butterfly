@@ -13,6 +13,7 @@
 
     <title>Butterfly</title>
     <link href="{{ static_url('main.css') }}" rel="stylesheet" id="style">
+    <link href="{{ static_url('filetree.css') }}" rel="stylesheet">
     <style type="text/css">
     <!--
     html, body {
@@ -27,7 +28,9 @@
         data-force-unicode-width="{{ 'yes' if options.force_unicode_width else 'no' }}"
         data-root-path="{{ options.uri_root_path }}"
         data-session-token={{ session }}>
-        <div id="file_tree" style="float:left;width:20%;height:100%;background-color:pink"></div>
+        <div id="tree" style="float:left;width:20%;height:100%;background-color:pink">
+            <div id="tree"></div>
+        </div>
         <div id="editor_and_terminal" style="float:left;background-color:#203744;width:80%;height:100%">
             <div id="menu">
                 <div class="btn-group" style="height: 5%">
@@ -83,6 +86,9 @@
             // });
 
             </script>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js"></script>
+            <script src="{{ static_url('filetree.js')}}"></script>
         </div>
   </body>
 </html>
