@@ -139,6 +139,7 @@ $(function () {
                             case 'json':
                             case 'css':
                             case 'html':
+                                window.term.editor.setValue(d.content,-1);
                                 $('#data .code').show();
                                 $('#code').val(d.content);
                                 break;

@@ -217,7 +217,6 @@
 
       ace.require("ace/ext/language_tools");
       var editor = ace.edit("editor");
-      console.log(editor);
       editor.$blockScrolling = Infinity;
       editor.setOptions({
         enableBasicAutocompletion: true,
@@ -355,7 +354,6 @@
     };
 
     Terminal.prototype.focus = function() {
-      console.log("focus");
       var old_sl;
       old_sl = this.scrollLock;
       this.scrollLock = true;
@@ -370,7 +368,6 @@
     };
 
     Terminal.prototype.blur = function() {
-      console.log("blur");
       var old_sl;
       old_sl = this.scrollLock;
       this.scrollLock = true;
