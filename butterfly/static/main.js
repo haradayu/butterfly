@@ -45,6 +45,7 @@
       }
       if (ws.shell.readyState === WebSocket.OPEN && ws.ctl.readyState === WebSocket.OPEN) {
         term = new Terminal(document.body, ws.shell.send.bind(ws.shell), ws.ctl.send.bind(ws.ctl));
+        window.term = term;
         term.ws = ws;
         window.butterfly = term;
         ws.ctl.send(JSON.stringify({
@@ -229,6 +230,7 @@
         editor.setFontSize(e.target.dataset['size'] / 1);
 
       };
+      this.editor = editor;
       // $('#font-size').click(function(e) {
       //   editor.setFontSize($(e.target).data('size'));
       // });

@@ -11,6 +11,18 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{ static_url('images/favicon.png') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/themes/default/style.min.css" />
+    <style type="text/css">
+        #treediv li:nth-child(even){
+            background-color: #101822;
+        }
+        .jstree-default .jstree-clicked {
+            background: #407288;
+        }
+        .jstree-default .jstree-hovered {
+          background: #40A088;
+
+        }
+    </style>
 
     <title>Butterfly</title>
     <link href="{{ static_url('main.css') }}" rel="stylesheet" id="style">
@@ -29,7 +41,7 @@
         data-force-unicode-width="{{ 'yes' if options.force_unicode_width else 'no' }}"
         data-root-path="{{ options.uri_root_path }}"
         data-session-token={{ session }}>
-        <div id="tree" style="float:left;width:20%;height:100%;">
+        <div id="treediv" style="float:left;width:20%;height:100%;background-color:#203744;">
             <div id="tree"></div>
         </div>
         <div id="editor_and_terminal" style="float:left;background-color:#203744;width:80%;height:100%">
@@ -90,6 +102,13 @@
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js"></script>
             <script src="{{ static_url('filetree.js')}}"></script>
+
         </div>
   </body>
+  <script>
+        $('#save').click(function(e) {
+            var text = window.term.editor.getValue();
+            console.log(text);
+        });
+  </script>
 </html>
