@@ -10,6 +10,7 @@
     <meta name="author" content="Mounier Florian">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{ static_url('images/favicon.png') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/themes/default/style.min.css" />
 
     <title>Butterfly</title>
     <link href="{{ static_url('main.css') }}" rel="stylesheet" id="style">
@@ -28,7 +29,7 @@
         data-force-unicode-width="{{ 'yes' if options.force_unicode_width else 'no' }}"
         data-root-path="{{ options.uri_root_path }}"
         data-session-token={{ session }}>
-        <div id="tree" style="float:left;width:20%;height:100%;background-color:pink">
+        <div id="tree" style="float:left;width:20%;height:100%;">
             <div id="tree"></div>
         </div>
         <div id="editor_and_terminal" style="float:left;background-color:#203744;width:80%;height:100%">
