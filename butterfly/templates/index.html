@@ -28,12 +28,10 @@
     <link href="{{ static_url('main.css') }}" rel="stylesheet" id="style">
     <link href="{{ static_url('filetree.css') }}" rel="stylesheet">
     <style type="text/css">
-    <!--
     html, body {
       height: 100%;
       overflow: hidden;
     }
-    -->
     </style>
   </head>
 
@@ -60,7 +58,7 @@
                     <button id="load" class="btn btn-default"><i class="glyphicon glyphicon-folder-open"></i></button>
                 </div>
                 <div class="input-group" style="height: 5%">
-                    <input type="text" class="form-control">
+                    <input id="filename" type="text" class="form-control" value="test">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">保存</button>
                     </span>
@@ -105,9 +103,5 @@
 
         </div>
   </body>
-  <script>
-        $('#save').click(function(e) {
-            var text = window.term.editor.getValue();
-        });
-  </script>
+  <script src="{{static_url('button.js')}}"></script>
 </html>

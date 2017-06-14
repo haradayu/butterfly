@@ -1,6 +1,6 @@
 $(function () {
     var href = window.location.href ;
-    var file_server_port = 8080;
+    var file_server_port = 57576;
     var domain = href.split(":")[0] + ":" + href.split(":")[1] + ":"+ file_server_port + "/";
     $(window).resize(function () {
         var h = Math.max($(window).height() - 0, 420);
@@ -140,8 +140,8 @@ $(function () {
                             case 'css':
                             case 'html':
                                 window.term.editor.setValue(d.content,-1);
-                                $('#data .code').show();
-                                $('#code').val(d.content);
+                                $("#filename").val(data["node"]["text"]);
+                                // data["node"]["text"]
                                 break;
                             case 'png':
                             case 'jpg':
