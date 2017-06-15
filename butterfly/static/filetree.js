@@ -141,8 +141,7 @@ $(function () {
                             case 'css':
                             case 'html':
                                 window.term.editor.setValue(d.content,-1);
-                                $("#filename").val(data["node"]["text"]);
-                                // data["node"]["text"]
+                                $("#filename").val(data["node"]["id"]);
                                 break;
                             case 'png':
                             case 'jpg':

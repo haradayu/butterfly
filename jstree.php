@@ -175,9 +175,6 @@ class fs
 	}
     public function save_content($id, $name, $content){
         $dir = $this->path($id);
-        if(preg_match('([^ a-zа-я-_0-9.]+)ui', $name) || !strlen($name)) {
-            throw new Exception('Invalid name: ' . $name);
-        }
         file_put_contents($dir . DIRECTORY_SEPARATOR . $name, $content);
 
         return array('id' => $this->id($dir . DIRECTORY_SEPARATOR . $name));
