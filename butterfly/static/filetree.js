@@ -85,6 +85,7 @@ $(function () {
                 });
         })
         .on('create_node.jstree', function (e, data) {
+            console.log(data);
             $.get(domain + '?operation=create_node', { 'type' : data.node.type, 'id' : data.node.parent, 'text' : data.node.text })
                 .done(function (d) {
                     data.instance.set_id(data.node, d.id);
