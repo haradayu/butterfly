@@ -1,6 +1,8 @@
 <?php
-ini_set('open_basedir', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+// ini_set('open_basedir', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 header('Access-Control-Allow-Origin: *');
+$workspace_dir = "../workspace/";
+
 class fs
 {
 	protected $base = null;
@@ -181,8 +183,10 @@ class fs
     }
 }
 
+$fs = new fs($workspace_dir);
+
+
 if(isset($_POST['operation_post'])){
-    $fs = new fs(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'root' . DIRECTORY_SEPARATOR);
     if($_POST['operation_post'] === 'save_content'){
         // $dir = "/Users/yuanyoufu/smartLock/butterfly/data/root";
         // file_put_contents($dir . DIRECTORY_SEPARATOR . $_POST['filename'], $_POST['content']);
@@ -192,11 +196,10 @@ if(isset($_POST['operation_post'])){
     }
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($rslt);
-
 }
 
 if(isset($_GET['operation'])) {
-	$fs = new fs(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'root' . DIRECTORY_SEPARATOR);
+
 	try {
 		$rslt = null;
 		switch($_GET['operation']) {
