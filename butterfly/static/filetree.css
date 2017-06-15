@@ -1,3 +1,7 @@
+.vakata-context ul {
+    z-index: 10;
+}
+
 /*#container { min-width:320px; margin:0px auto 0 auto; background:white; border-radius:0px; padding:0px; overflow:hidden; }*/
 #tree { border-right:1px solid silver; overflow:auto; padding:0px 0; }
 /*#data { margin-left:320px; }
