@@ -140,6 +140,9 @@ $(function () {
                             case 'json':
                             case 'css':
                             case 'html':
+                            case 'py':
+                            case 'c':
+                            case 'sh':
                                 window.term.editor.setValue(d.content,-1);
                                 $("#filename").val(data["node"]["id"]);
                                 break;
@@ -152,7 +155,8 @@ $(function () {
                                 $('#data .image').show();
                                 break;
                             default:
-                                $('#data .default').html(d.content).show();
+                                window.term.editor.setValue(d.content,-1);
+                                $("#filename").val(data["node"]["id"]);
                                 break;
                         }
                     }
