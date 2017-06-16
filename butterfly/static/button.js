@@ -11,6 +11,9 @@ $('#save').click(function(e) {
         });
 
 });
+$('#refresh').click(function(e) {
+    $('#tree').jstree().refresh();
+});
 
 function initWidthResizer(targetId, partnerId){
     var target = null;
