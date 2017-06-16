@@ -43,9 +43,6 @@
     <script src="{{ static_url('ext.%sjs' % (
     '' if options.unminified else 'min.')) }}"></script>
     <script src="{{ reverse_url('LocalJsStatic') }}"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js"></script>
-    <script src="{{ static_url('filetree.js')}}"></script>
   </head>
 
   <body spellcheck="false"
@@ -90,5 +87,8 @@
 
         </div>
   </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js"></script>
+  <script src="{{ static_url('filetree.js')}}"></script>
   <script src="{{static_url('button.js')}}"></script>
 </html>
