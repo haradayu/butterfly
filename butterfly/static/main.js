@@ -193,11 +193,14 @@
       addEventListener('keypress', this.keyPress.bind(this));
       addEventListener('focus', this.focus.bind(this));
       addEventListener('blur', this.blur.bind(this));
-      addEventListener('copy',function(e){
-          e.preventDefault();
-          console.log("copy");
-          e.clipboardData.setData('text/plain', 'Hello, world!');
-      })
+      addEventListener('click',function(e){
+        if(e.target.id == "term"){
+          window.selected_id = "term";
+        }else{
+          window.selected_id = "editor";
+        }
+        
+      });
       addEventListener('resize', (function(_this) {
         return function() {
           return _this.resize();

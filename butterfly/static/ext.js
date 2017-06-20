@@ -121,41 +121,53 @@
   });
 
   addEventListener('copy', copy = function(e) {
-    var data, end, j, len1, line, ref, sel;
-    butterfly.bell("copied");
-    e.clipboardData.clearData();
-    sel = getSelection().toString().replace(/\u00A0/g, ' ').replace(/\u2007/g, ' ');
-    data = '';
-    ref = sel.split('\n');
-    for (j = 0, len1 = ref.length; j < len1; j++) {
-      line = ref[j];
-      if (line.slice(-1) === '\u23CE') {
-        end = '';
-        line = line.slice(0, -1);
-      } else {
-        end = '\n';
+    if(window.selected_id == "term"){
+      var data, end, j, len1, line, ref, sel;
+      butterfly.bell("copied");
+      e.clipboardData.clearData();
+      sel = getSelection().toString().replace(/\u00A0/g, ' ').replace(/\u2007/g, ' ');
+      data = '';
+      ref = sel.split('\n');
+      for (j = 0, len1 = ref.length; j < len1; j++) {
+        line = ref[j];
+        if (line.slice(-1) === '\u23CE') {
+          end = '';
+          line = line.slice(0, -1);
+        } else {
+          end = '\n';
+        }
+        data += line.replace(/\s*$/, '') + end;
       }
-      data += line.replace(/\s*$/, '') + end;
+      e.clipboardData.setData('text/plain', data.slice(0, -1));
+      return e.preventDefault();
+    }else{
+      var editor = window.term.editor;
+      var range = editor.getSelectionRange();
+      var text = editor.session.getTextRange(range)
+      e.clipboardData.setData('text/plain',text);
     }
-    e.clipboardData.setData('text/plain', data.slice(0, -1));
-    return e.preventDefault();
   });
 
   addEventListener('paste', function(e) {
-    var data, send, size;
-    butterfly.bell("pasted");
-    data = e.clipboardData.getData('text/plain');
-    data = data.replace(/\r\n/g, '\n').replace(/\n/g, '\r');
-    size = 1024;
-    send = function() {
-      butterfly.send(data.substring(0, size));
-      data = data.substring(size);
-      if (data.length) {
-        return setTimeout(send, 25);
-      }
-    };
-    send();
-    return e.preventDefault();
+    if(window.selected_id == "term"){
+      var data, send, size;
+      butterfly.bell("pasted");
+      data = e.clipboardData.getData('text/plain');
+      data = data.replace(/\r\n/g, '\n').replace(/\n/g, '\r');
+      size = 1024;
+      send = function() {
+        butterfly.send(data.substring(0, size));
+        data = data.substring(size);
+        if (data.length) {
+          return setTimeout(send, 25);
+        }
+      };
+      send();
+      return e.preventDefault();
+    }else if(window.selected_id == "editor"){
+      data = e.clipboardData.getData('text/plain');
+      
+    }
   });
 
   addEventListener('beforeunload', function(e) {
