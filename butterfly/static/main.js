@@ -900,6 +900,7 @@
                 }
                 break;
               case "\t":
+                console.log("tab");
                 this.x = this.nextStop();
                 break;
               case "\x0e":
@@ -1448,6 +1449,10 @@
         this.skipNextKey = true;
       }else{
         this.skipNextKey = null;
+      }
+      if(ev.keyCode == 9){
+        console.log(ev);
+        cancel(ev);
       }
 
       if (ev.keyCode > 15 && ev.keyCode < 19) {
