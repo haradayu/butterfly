@@ -193,6 +193,11 @@
       addEventListener('keypress', this.keyPress.bind(this));
       addEventListener('focus', this.focus.bind(this));
       addEventListener('blur', this.blur.bind(this));
+      addEventListener('copy',function(e){
+          e.preventDefault();
+          console.log("copy");
+          e.clipboardData.setData('text/plain', 'Hello, world!');
+      })
       addEventListener('resize', (function(_this) {
         return function() {
           return _this.resize();
@@ -1656,7 +1661,7 @@
       }
       this.showCursor();
       this.send(key);
-      return cancel(ev);
+      return (ev);
     };
 
     Terminal.prototype.setgLevel = function(g) {
